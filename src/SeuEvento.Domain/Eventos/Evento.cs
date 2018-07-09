@@ -85,7 +85,7 @@ namespace SeuEvento.Domain.Eventos
             ValidationResult = Validate(this);
 
             //Validações adicionais
-            ValidarEndereco();
+            //ValidarEndereco();
         }
 
         private void ValidarNome()
@@ -140,55 +140,37 @@ namespace SeuEvento.Domain.Eventos
                 .Length(2, 150).WithMessage("O nome do organizador precisa ter entre 2 e 150 caracteres");
         }
 
-        private void ValidarEndereco()
-        {
-            if (Online) return;
-            if (Endereco.EhValido()) return;
-            foreach (var error in Endereco.ValidationResult.Errors)
-            {
-                ValidationResult.Errors.Add(error);
-            }
-        }
+        //private void ValidarEndereco()
+        //{
+        //    if (Online) return;
+        //    if (Endereco.EhValido()) return;
+        //    foreach (var error in Endereco.ValidationResult.Errors)
+        //    {
+        //        ValidationResult.Errors.Add(error);
+        //    }
+        //}
         #endregion
 
         public static class EventoFactory
         {
-            public static Evento NovoEventoCompleto(
-                Guid id,
-                string nome,
-                string descricaoCurta,
-                string descricaoLonga,
-                DateTime dataInicio,
-                DateTime dataFim,
-                bool gratuito,
-                decimal valor,
-                bool online,
-                string nomeEmpresa,
-                Guid? organizadorId,
-                Endereco endereco,
-                Guid categoriaId)
+            public static Evento NovoEventoCompleto(Guid id, string nome, string descCurta, string descLonga, DateTime dataInicio, DateTime dataFim, bool gratuito, decimal valor, bool online, string nomeEmpresa, Guid? organizadorId)
             {
                 var evento = new Evento
                 {
                     Id = id,
                     Nome = nome,
-                    DescricaoCurta = descricaoCurta,
-                    DescricaoLonga = descricaoLonga,
+                    DescricaoCurta = descCurta,
+                    DescricaoLonga = descLonga,
                     DataInicio = dataInicio,
                     DataFim = dataFim,
-                    Online = online,
                     Gratuito = gratuito,
                     Valor = valor,
-                    NomeEmpresa = nomeEmpresa,
-                    Endereco = endereco,
-                    CategoriaId = categoriaId
+                    Online = online,
+                    NomeEmpresa = nomeEmpresa
                 };
 
-                if (organizadorId.HasValue)
-                    evento.OrganizadorId = organizadorId.Value;
-
-                if (online)
-                    evento.Endereco = null;
+                if (organizadorId != null)
+                    evento.Organizador = new Organizador(organizadorId.Value);
 
                 return evento;
             }

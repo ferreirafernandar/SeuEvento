@@ -14,9 +14,10 @@ namespace SeuEvento.Domain.Eventos.Commands
             bool gratuito,
             decimal valor,
             bool online,
-            string nomeEmpresa,
-            Guid organizadorId,
-            Guid categoriaId)
+            string nomeEmpresa
+            //Guid organizadorId,
+            //Guid categoriaId
+            )
         {
             Id = id;
             Nome = nome;
@@ -28,8 +29,8 @@ namespace SeuEvento.Domain.Eventos.Commands
             Valor = valor;
             Online = online;
             NomeEmpresa = nomeEmpresa;
-            OrganizadorId = organizadorId;
-            CategoriaId = categoriaId;
+            //OrganizadorId = organizadorId;
+            //CategoriaId = categoriaId;
         }
     }
 }
