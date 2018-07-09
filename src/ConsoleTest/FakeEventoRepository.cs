@@ -8,30 +8,21 @@ namespace ConsoleTest
 {
     public class FakeEventoRepository : IEventoRepository
     {
-        private readonly IEventoRepository _eventoRepository;
-
-        public FakeEventoRepository(IEventoRepository eventoRepository)
+        public void Dispose()
         {
-            _eventoRepository = eventoRepository;
-        }
-
-        public FakeEventoRepository()
-        {
+            //
         }
 
         public void Adicionar(Evento obj)
         {
-            _eventoRepository.Adicionar(obj);
+            //
         }
 
         public Evento ObterPorId(Guid id)
         {
             return new Evento("Fake", DateTime.Now, DateTime.Now, true, 0, true, "Empresa");
         }
-        public void Dispose()
-        {
-            _eventoRepository.Dispose();
-        }
+
         public IEnumerable<Evento> ObterTodos()
         {
             throw new NotImplementedException();
