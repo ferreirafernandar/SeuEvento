@@ -25,9 +25,11 @@ namespace SeuEvento.Domain.Eventos.Commands
 
         public void Handle(RegistrarEventoCommand message)
         {
-            //var endereco = new Endereco(message.Endereco.Id, message.Endereco.Logradouro, message.Endereco.Numero, message.Endereco.Complemento, message.Endereco.Bairro, message.Endereco.Cep, message.Endereco.Cidade, message.Endereco.Estado, message.Endereco.EventoId.Value);
+            var endereco = new Endereco(message.Endereco.Id, message.Endereco.Logradouro, message.Endereco.Numero, message.Endereco.Complemento, message.Endereco.Bairro, message.Endereco.Cep, message.Endereco.Cidade, message.Endereco.Estado, message.Endereco.EventoId.Value);
 
-            var evento = new Evento(message.Nome, message.DataInicio, message.DataFim, message.Gratuito, message.Valor, message.Online, message.NomeEmpresa);
+            var evento = Evento.EventoFactory.NovoEventoCompleto(message.Id, message.Nome, message.DescricaoCurta,
+                message.DescricaoLonga, message.DataInicio, message.DataFim, message.Gratuito, message.Valor,
+                message.Online, message.NomeEmpresa, message.OrganizadorId, endereco, message.CategoriaId);
 
             if (!EventoValido(evento)) return;
 
@@ -40,20 +42,20 @@ namespace SeuEvento.Domain.Eventos.Commands
 
         public void Handle(AtualizarEventoCommand message)
         {
+            var eventoAtual = _eventoRepository.ObterPorId(message.Id);
+
             if (!EventoExistente(message.Id, message.MessageType)) return;
 
             var evento = Evento.EventoFactory.NovoEventoCompleto(message.Id, message.Nome, message.DescricaoCurta,
-                                                                 message.DescricaoLonga, message.DataInicio, message.DataFim, message.Gratuito, message.Valor,
-                                                                 message.Online, message.NomeEmpresa, null);
+                message.DescricaoLonga, message.DataInicio, message.DataFim, message.Gratuito, message.Valor,
+                message.Online, message.NomeEmpresa, message.OrganizadorId, eventoAtual.Endereco, message.CategoriaId);
 
             if (!EventoValido(evento)) return;
 
             _eventoRepository.Atualizar(evento);
 
             if (Commit())
-            {
                 _bus.RaiseEvent(new EventoAtualizadoEvent(evento.Id, evento.Nome, evento.DescricaoCurta, evento.DescricaoLonga, evento.DataInicio, evento.DataFim, evento.Gratuito, evento.Valor, evento.Online, evento.NomeEmpresa));
-            }
         }
 
         public void Handle(ExcluirEventoCommand message)
