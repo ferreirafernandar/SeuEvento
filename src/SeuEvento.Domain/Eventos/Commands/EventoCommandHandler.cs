@@ -25,7 +25,7 @@ namespace SeuEvento.Domain.Eventos.Commands
 
         public void Handle(RegistrarEventoCommand message)
         {
-            var endereco = new Endereco(message.Endereco.Id, message.Endereco.Logradouro, message.Endereco.Numero, message.Endereco.Complemento, message.Endereco.Bairro, message.Endereco.Cep, message.Endereco.Cidade, message.Endereco.Estado, message.Endereco.EventoId.Value);
+            var endereco = new Endereco(message.Endereco.Id, message.Endereco.Logradouro, message.Endereco.Numero, message.Endereco.Complemento, message.Endereco.Bairro, message.Endereco.Cep, message.Endereco.Cidade, message.Endereco.Estado, message.Endereco.EventoId.GetValueOrDefault());
 
             var evento = Evento.EventoFactory.NovoEventoCompleto(message.Id, message.Nome, message.DescricaoCurta,
                 message.DescricaoLonga, message.DataInicio, message.DataFim, message.Gratuito, message.Valor,
@@ -81,6 +81,7 @@ namespace SeuEvento.Domain.Eventos.Commands
             var evento = _eventoRepository.ObterPorId(id);
 
             if (evento != null) return true;
+
             _bus.RaiseEvent(new DomainNotification(messageType, "Evento não encontrado."));
 
             return false;
