@@ -5,6 +5,7 @@ using SeuEvento.Domain.Core.Events;
 using SeuEvento.Domain.Core.Notifications;
 using SeuEvento.Domain.Eventos.Events;
 using SeuEvento.Domain.Eventos.Repository;
+using SeuEvento.Domain.Interfaces;
 
 namespace SeuEvento.Domain.Eventos.Commands
 {

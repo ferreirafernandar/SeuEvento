@@ -1,5 +1,5 @@
 ﻿using SeuEvento.Domain.Core.Commands;
-using SeuEvento.Domain.Eventos.Repository;
+using SeuEvento.Domain.Interfaces;
 using SeuEvento.Infra.Data.Context;
 
 namespace SeuEvento.Infra.Data.UoW

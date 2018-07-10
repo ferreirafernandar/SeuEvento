@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using SeuEvento.Domain.CommandHandlers;
+﻿using SeuEvento.Domain.CommandHandlers;
 using SeuEvento.Domain.Core.Bus;
 using SeuEvento.Domain.Core.Events;
 using SeuEvento.Domain.Core.Notifications;
-using SeuEvento.Domain.Eventos.Repository;
+using SeuEvento.Domain.Interfaces;
 using SeuEvento.Domain.Organizadores.Events;
 using SeuEvento.Domain.Organizadores.Repository;
+using System.Linq;
 
 namespace SeuEvento.Domain.Organizadores.Commands
 {

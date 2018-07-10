@@ -1,8 +1,8 @@
-﻿using System;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using SeuEvento.Domain.Core.Bus;
 using SeuEvento.Domain.Core.Notifications;
-using SeuEvento.Domain.Eventos.Repository;
+using SeuEvento.Domain.Interfaces;
+using System;
 
 namespace SeuEvento.Domain.CommandHandlers
 {

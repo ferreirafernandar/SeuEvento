@@ -1,6 +1,6 @@
-﻿using System;
-using SeuEvento.Domain.Core.Commands;
-using SeuEvento.Domain.Eventos.Repository;
+﻿using SeuEvento.Domain.Core.Commands;
+using SeuEvento.Domain.Interfaces;
+using System;
 
 namespace ConsoleTest
 {
