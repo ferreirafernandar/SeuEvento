@@ -10,7 +10,7 @@ namespace SeuEvento.Infra.Data.Mappings
         {
             builder
                 .Property(e => e.Nome)
-                .HasColumnName("varchar(150)")
+                .HasColumnType("varchar(150)")
                   .IsRequired();
 
             builder

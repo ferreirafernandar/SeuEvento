@@ -10,25 +10,25 @@ namespace SeuEvento.Infra.Data.Mappings
         {
             builder
                 .Property(e => e.Logradouro)
-                .HasColumnName("varchar(150)")
+                .HasColumnType("varchar(150)")
                 .HasMaxLength(150)
                 .IsRequired();
 
             builder
                 .Property(e => e.Numero)
-                .HasColumnName("varchar(20)")
+                .HasColumnType("varchar(20)")
                 .HasMaxLength(20)
                 .IsRequired();
 
             builder
                 .Property(e => e.Bairro)
-                .HasColumnName("varchar(50)")
+                .HasColumnType("varchar(50)")
                 .HasMaxLength(50)
                 .IsRequired();
 
             builder
                 .Property(e => e.Cep)
-                .HasColumnName("varchar(8)")
+                .HasColumnType("varchar(8)")
                 .HasMaxLength(8)
                 .IsRequired();
 

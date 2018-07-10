@@ -11,17 +11,17 @@ namespace SeuEvento.Infra.Data.Mappings
         {
             builder
                 .Property(e => e.Nome)
-                .HasColumnName("varchar(150)")
+                .HasColumnType("varchar(150)")
                 .IsRequired();
 
             builder
                 .Property(e => e.Email)
-                .HasColumnName("varchar(100)")
+                .HasColumnType("varchar(100)")
                 .IsRequired();
 
             builder
                 .Property(e => e.Cpf)
-                .HasColumnName("varchar(11)")
+                .HasColumnType("varchar(11)")
                 .HasMaxLength(11)
                 .IsRequired();
 
