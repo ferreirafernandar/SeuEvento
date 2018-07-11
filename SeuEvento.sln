@@ -23,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{5D49F6ED-91ED-41CD-9CCB-987A618156C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeuEvento.Infra.Data", "src\SeuEvento.Infra.Data\SeuEvento.Infra.Data.csproj", "{8DD30404-C3CA-478E-9399-EBEDEEF08B87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeuEvento.Infra.Data", "src\SeuEvento.Infra.Data\SeuEvento.Infra.Data.csproj", "{8DD30404-C3CA-478E-9399-EBEDEEF08B87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeuEvento.Application", "src\SeuEvento.Application\SeuEvento.Application.csproj", "{D2ED9235-BBBC-46CA-9727-DC5173E1991D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{8DD30404-C3CA-478E-9399-EBEDEEF08B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DD30404-C3CA-478E-9399-EBEDEEF08B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DD30404-C3CA-478E-9399-EBEDEEF08B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2ED9235-BBBC-46CA-9727-DC5173E1991D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ED9235-BBBC-46CA-9727-DC5173E1991D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ED9235-BBBC-46CA-9727-DC5173E1991D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ED9235-BBBC-46CA-9727-DC5173E1991D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{AA783313-F2F5-40A2-923D-E2A7C1BC5472} = {A1FD2F8D-102C-41B9-98C8-51010C1612A3}
 		{5D49F6ED-91ED-41CD-9CCB-987A618156C0} = {A1FD2F8D-102C-41B9-98C8-51010C1612A3}
 		{8DD30404-C3CA-478E-9399-EBEDEEF08B87} = {AA783313-F2F5-40A2-923D-E2A7C1BC5472}
+		{D2ED9235-BBBC-46CA-9727-DC5173E1991D} = {E04FF996-C0D0-49ED-8275-611D949EDE61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDF888EF-6C61-474C-BEC2-2023EAA3C683}
