@@ -38,7 +38,6 @@ namespace SeuEvento.Infra.Data.Mappings
                 .HasForeignKey<Endereco>(e => e.EventoId)
                 .IsRequired(false);
 
-
             builder
                 .Ignore(e => e.ValidationResult);
 

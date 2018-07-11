@@ -6,14 +6,14 @@ namespace SeuEvento.Domain.Eventos
 {
     public class Endereco : Entity<Endereco>
     {
-        public Endereco(Guid id, 
-                        string logradouro, 
-                        string numero, 
-                        string complemento, 
-                        string bairro, 
-                        string cep, 
-                        string cidade, 
-                        string estado, 
+        public Endereco(Guid id,
+                        string logradouro,
+                        string numero,
+                        string complemento,
+                        string bairro,
+                        string cep,
+                        string cidade,
+                        string estado,
                         Guid? eventoId)
         {
             Id = id;
@@ -28,18 +28,20 @@ namespace SeuEvento.Domain.Eventos
         }
 
         //Construtor para EF
-        protected Endereco() { }
+        protected Endereco()
+        {
+        }
 
-        public string Logradouro { get; private set; }
-        public string Numero { get; private set; }
-        public string Complemento { get; private set; }
-        public string Bairro { get; private set; }
-        public string Cep { get; private set; }
-        public string Cidade { get; private set; }
-        public string Estado { get; private set; }
+        public string Logradouro { get; }
+        public string Numero { get; }
+        public string Complemento { get; }
+        public string Bairro { get; }
+        public string Cep { get; }
+        public string Cidade { get; }
+        public string Estado { get; }
 
         //Chave de relacionamento com evento
-        public Guid? EventoId { get; private set; }
+        public Guid? EventoId { get; }
         public virtual Evento Evento { get; private set; }
 
         public override bool EhValido()

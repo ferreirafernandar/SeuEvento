@@ -33,6 +33,6 @@ namespace SeuEvento.Domain.Eventos.Commands
             Endereco = endereco;
         }
 
-        public IncluirEnderecoEventoCommand Endereco { get; private set; }
+        public IncluirEnderecoEventoCommand Endereco { get; }
     }
 }

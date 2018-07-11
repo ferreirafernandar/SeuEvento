@@ -11,7 +11,7 @@ namespace SeuEvento.Infra.Data.Mappings
             builder
                 .Property(e => e.Nome)
                 .HasColumnType("varchar(150)")
-                  .IsRequired();
+                .IsRequired();
 
             builder
                 .Ignore(e => e.ValidationResult);

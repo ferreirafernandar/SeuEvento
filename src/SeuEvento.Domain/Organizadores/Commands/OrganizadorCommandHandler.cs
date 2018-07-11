@@ -1,11 +1,11 @@
-﻿using SeuEvento.Domain.CommandHandlers;
+﻿using System.Linq;
+using SeuEvento.Domain.CommandHandlers;
 using SeuEvento.Domain.Core.Bus;
 using SeuEvento.Domain.Core.Events;
 using SeuEvento.Domain.Core.Notifications;
 using SeuEvento.Domain.Interfaces;
 using SeuEvento.Domain.Organizadores.Events;
 using SeuEvento.Domain.Organizadores.Repository;
-using System.Linq;
 
 namespace SeuEvento.Domain.Organizadores.Commands
 {
@@ -38,16 +38,12 @@ namespace SeuEvento.Domain.Organizadores.Commands
             var organizadorExistente = _organizadorRepository.Buscar(o => o.Cpf == organizador.Cpf || o.Email == organizador.Email);
 
             if (organizadorExistente.Any())
-            {
                 _bus.RaiseEvent(new DomainNotification(message.MessageType, "CPF ou e-mail já utilizados"));
-            }
 
             _organizadorRepository.Adicionar(organizador);
 
             if (Commit())
-            {
                 _bus.RaiseEvent(new OrganizadorRegistradoEvent(organizador.Id, organizador.Nome, organizador.Cpf, organizador.Email));
-            }
         }
     }
 }

@@ -27,7 +27,9 @@ namespace SeuEvento.Domain.Eventos
             NomeEmpresa = nomeEmpresa;
         }
 
-        private Evento() { }
+        private Evento()
+        {
+        }
 
         public string Nome { get; private set; }
         public string DescricaoCurta { get; private set; }
@@ -74,7 +76,51 @@ namespace SeuEvento.Domain.Eventos
             return ValidationResult.IsValid;
         }
 
+        public static class EventoFactory
+        {
+            public static Evento NovoEventoCompleto(
+                Guid id,
+                string nome,
+                string descricaoCurta,
+                string descricaoLonga,
+                DateTime dataInicio,
+                DateTime dataFim,
+                bool gratuito,
+                decimal valor,
+                bool online,
+                string nomeEmpresa,
+                Guid? organizadorId,
+                Endereco endereco,
+                Guid categoriaId)
+            {
+                var evento = new Evento
+                {
+                    Id = id,
+                    Nome = nome,
+                    DescricaoCurta = descricaoCurta,
+                    DescricaoLonga = descricaoLonga,
+                    DataInicio = dataInicio,
+                    DataFim = dataFim,
+                    Online = online,
+                    Gratuito = gratuito,
+                    Valor = valor,
+                    NomeEmpresa = nomeEmpresa,
+                    Endereco = endereco,
+                    CategoriaId = categoriaId
+                };
+
+                if (organizadorId.HasValue)
+                    evento.OrganizadorId = organizadorId.Value;
+
+                if (online)
+                    evento.Endereco = null;
+
+                return evento;
+            }
+        }
+
         #region Validações
+
         private void Validar()
         {
             ValidarNome();
@@ -130,7 +176,6 @@ namespace SeuEvento.Domain.Eventos
                 RuleFor(c => c.Endereco)
                     .NotNull().When(c => c.Online == false)
                     .WithMessage("O evento deve possuir um endereço");
-
         }
 
         private void ValidarNomeEmpresa()
@@ -145,53 +190,9 @@ namespace SeuEvento.Domain.Eventos
             if (Online) return;
             if (Endereco.EhValido()) return;
             foreach (var error in Endereco.ValidationResult.Errors)
-            {
                 ValidationResult.Errors.Add(error);
-            }
         }
+
         #endregion
-
-        public static class EventoFactory
-        {
-            public static Evento NovoEventoCompleto(
-                Guid id,
-                string nome,
-                string descricaoCurta,
-                string descricaoLonga,
-                DateTime dataInicio,
-                DateTime dataFim,
-                bool gratuito,
-                decimal valor,
-                bool online,
-                string nomeEmpresa,
-                Guid? organizadorId,
-                Endereco endereco,
-                Guid categoriaId)
-            {
-                var evento = new Evento
-                {
-                    Id = id,
-                    Nome = nome,
-                    DescricaoCurta = descricaoCurta,
-                    DescricaoLonga = descricaoLonga,
-                    DataInicio = dataInicio,
-                    DataFim = dataFim,
-                    Online = online,
-                    Gratuito = gratuito,
-                    Valor = valor,
-                    NomeEmpresa = nomeEmpresa,
-                    Endereco = endereco,
-                    CategoriaId = categoriaId
-                };
-
-                if (organizadorId.HasValue)
-                    evento.OrganizadorId = organizadorId.Value;
-
-                if (online)
-                    evento.Endereco = null;
-
-                return evento;
-            }
-        }
     }
 }

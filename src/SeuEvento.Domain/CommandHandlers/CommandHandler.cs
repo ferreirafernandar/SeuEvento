@@ -1,16 +1,16 @@
-﻿using FluentValidation.Results;
+﻿using System;
+using FluentValidation.Results;
 using SeuEvento.Domain.Core.Bus;
 using SeuEvento.Domain.Core.Notifications;
 using SeuEvento.Domain.Interfaces;
-using System;
 
 namespace SeuEvento.Domain.CommandHandlers
 {
     public class CommandHandler
     {
-        private readonly IUnitOfWork _uow;
         private readonly IBus _bus;
         private readonly IDomainNotificationHandler<DomainNotification> _notifications;
+        private readonly IUnitOfWork _uow;
 
         protected CommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notifications)
         {

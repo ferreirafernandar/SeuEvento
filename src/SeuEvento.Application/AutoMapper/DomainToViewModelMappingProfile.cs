@@ -5,14 +5,14 @@ using SeuEvento.Domain.Organizadores;
 
 namespace SeuEvento.Application.AutoMapper
 {
-  public class DomainToViewModelMappingProfile : Profile
-  {
-    public DomainToViewModelMappingProfile()
+    public class DomainToViewModelMappingProfile : Profile
     {
-      CreateMap<Evento, EventoViewModel>();
-      CreateMap<Endereco, EnderecoViewModel>();
-      CreateMap<Categoria, CategoriaViewModel>();
-      CreateMap<Organizador, OrganizadorViewModel>();
+        public DomainToViewModelMappingProfile()
+        {
+            CreateMap<Evento, EventoViewModel>();
+            CreateMap<Endereco, EnderecoViewModel>();
+            CreateMap<Categoria, CategoriaViewModel>();
+            CreateMap<Organizador, OrganizadorViewModel>();
+        }
     }
-  }
 }

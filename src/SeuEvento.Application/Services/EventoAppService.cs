@@ -9,75 +9,75 @@ using SeuEvento.Domain.Eventos.Repository;
 
 namespace SeuEvento.Application.Services
 {
-  public class EventoAppService : IEventoAppService
-  {
-    private readonly IBus _bus;
-    private readonly IMapper _mapper;
-    private readonly IEventoRepository _eventoRepository;
-
-    public EventoAppService(IBus bus,
-                            IMapper mapper,
-                            IEventoRepository eventoRepository)
+    public class EventoAppService : IEventoAppService
     {
-      _bus = bus;
-      _mapper = mapper;
-      _eventoRepository = eventoRepository;
-    }
+        private readonly IBus _bus;
+        private readonly IEventoRepository _eventoRepository;
+        private readonly IMapper _mapper;
 
-    public void Registrar(EventoViewModel eventoViewModel)
-    {
-      var registroCommand = _mapper.Map<RegistrarEventoCommand>(eventoViewModel);
-      _bus.SendCommand(registroCommand);
-    }
+        public EventoAppService(IBus bus,
+                                IMapper mapper,
+                                IEventoRepository eventoRepository)
+        {
+            _bus = bus;
+            _mapper = mapper;
+            _eventoRepository = eventoRepository;
+        }
 
-    public IEnumerable<EventoViewModel> ObterEventoPorOrganizador(Guid organizadorId)
-    {
-      return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterEventoPorOrganizador(organizadorId));
-    }
+        public void Registrar(EventoViewModel eventoViewModel)
+        {
+            var registroCommand = _mapper.Map<RegistrarEventoCommand>(eventoViewModel);
+            _bus.SendCommand(registroCommand);
+        }
 
-    public EventoViewModel ObterPorId(Guid id)
-    {
-      return _mapper.Map<EventoViewModel>(_eventoRepository.ObterPorId(id));
-    }
+        public IEnumerable<EventoViewModel> ObterEventoPorOrganizador(Guid organizadorId)
+        {
+            return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterEventoPorOrganizador(organizadorId));
+        }
 
-    public IEnumerable<EventoViewModel> ObterTodos()
-    {
-      return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterTodos());
-    }
+        public EventoViewModel ObterPorId(Guid id)
+        {
+            return _mapper.Map<EventoViewModel>(_eventoRepository.ObterPorId(id));
+        }
 
-    public void Atualizar(EventoViewModel eventoViewModel)
-    {
-      // TODO: Validar se o organizador é dono do evento
+        public IEnumerable<EventoViewModel> ObterTodos()
+        {
+            return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterTodos());
+        }
 
-      var atualizarEventoCommand = _mapper.Map<AtualizarEventoCommand>(eventoViewModel);
-      _bus.SendCommand(atualizarEventoCommand);
-    }
+        public void Atualizar(EventoViewModel eventoViewModel)
+        {
+            // TODO: Validar se o organizador é dono do evento
 
-    public void Excluir(Guid id)
-    {
-      _bus.SendCommand(new ExcluirEventoCommand(id));
-    }
+            var atualizarEventoCommand = _mapper.Map<AtualizarEventoCommand>(eventoViewModel);
+            _bus.SendCommand(atualizarEventoCommand);
+        }
 
-    public void AdicionarEndereco(EnderecoViewModel enderecoViewModel)
-    {
-      var enderecoCommand = _mapper.Map<IncluirEnderecoEventoCommand>(enderecoViewModel);
-      _bus.SendCommand(enderecoCommand);
-    }
+        public void Excluir(Guid id)
+        {
+            _bus.SendCommand(new ExcluirEventoCommand(id));
+        }
 
-    public void AtualizarEndereco(EnderecoViewModel enderecoViewModel)
-    {
-      var enderecoCommand = _mapper.Map<AtualizarEnderecoEventoCommand>(enderecoViewModel);
-      _bus.SendCommand(enderecoCommand);
-    }
+        public void AdicionarEndereco(EnderecoViewModel enderecoViewModel)
+        {
+            var enderecoCommand = _mapper.Map<IncluirEnderecoEventoCommand>(enderecoViewModel);
+            _bus.SendCommand(enderecoCommand);
+        }
 
-    public EnderecoViewModel ObterEnderecoPorId(Guid id)
-    {
-      return _mapper.Map<EnderecoViewModel>(_eventoRepository.ObterEnderecoPorId(id));
-    }
+        public void AtualizarEndereco(EnderecoViewModel enderecoViewModel)
+        {
+            var enderecoCommand = _mapper.Map<AtualizarEnderecoEventoCommand>(enderecoViewModel);
+            _bus.SendCommand(enderecoCommand);
+        }
 
-    public void Dispose()
-    {
-      _eventoRepository.Dispose();
+        public EnderecoViewModel ObterEnderecoPorId(Guid id)
+        {
+            return _mapper.Map<EnderecoViewModel>(_eventoRepository.ObterEnderecoPorId(id));
+        }
+
+        public void Dispose()
+        {
+            _eventoRepository.Dispose();
+        }
     }
-  }
 }

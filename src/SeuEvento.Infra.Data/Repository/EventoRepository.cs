@@ -1,9 +1,9 @@
-﻿using SeuEvento.Domain.Eventos;
-using SeuEvento.Domain.Eventos.Repository;
-using SeuEvento.Infra.Data.Context;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SeuEvento.Domain.Eventos;
+using SeuEvento.Domain.Eventos.Repository;
+using SeuEvento.Infra.Data.Context;
 
 namespace SeuEvento.Infra.Data.Repository
 {

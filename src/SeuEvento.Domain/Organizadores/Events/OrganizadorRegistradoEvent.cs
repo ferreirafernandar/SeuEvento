@@ -5,11 +5,6 @@ namespace SeuEvento.Domain.Organizadores.Events
 {
     public class OrganizadorRegistradoEvent : Event
     {
-        public Guid Id { get; private set; }
-        public string Nome { get; private set; }
-        public string Cpf { get; private set; }
-        public string Email { get; private set; }
-
         public OrganizadorRegistradoEvent(Guid id, string nome, string cpf, string email)
         {
             Id = id;
@@ -17,5 +12,10 @@ namespace SeuEvento.Domain.Organizadores.Events
             Cpf = cpf;
             Email = email;
         }
+
+        public Guid Id { get; }
+        public string Nome { get; }
+        public string Cpf { get; }
+        public string Email { get; }
     }
 }

@@ -6,9 +6,8 @@ namespace SeuEvento.Domain.Core.Notifications
 {
     public class DomainNotificationHandler : IDomainNotificationHandler<DomainNotification>
     {
-        public DomainNotificationHandler() => _notifications = new List<DomainNotification>();
-
         private List<DomainNotification> _notifications;
+        public DomainNotificationHandler() => _notifications = new List<DomainNotification>();
 
         public void Handle(DomainNotification message)
         {

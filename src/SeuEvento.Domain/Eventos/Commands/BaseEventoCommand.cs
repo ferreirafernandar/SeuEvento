@@ -1,5 +1,5 @@
-﻿using SeuEvento.Domain.Core.Commands;
-using System;
+﻿using System;
+using SeuEvento.Domain.Core.Commands;
 
 namespace SeuEvento.Domain.Eventos.Commands
 {

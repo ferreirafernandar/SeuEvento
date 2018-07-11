@@ -7,27 +7,27 @@ namespace SeuEvento.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Bairro",
-                table: "Enderecos",
-                type: "varchar(51)",
-                maxLength: 50,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "varchar(50)",
-                oldMaxLength: 50);
+                                                 "Bairro",
+                                                 "Enderecos",
+                                                 "varchar(51)",
+                                                 maxLength: 50,
+                                                 nullable: false,
+                                                 oldClrType: typeof(string),
+                                                 oldType: "varchar(50)",
+                                                 oldMaxLength: 50);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Bairro",
-                table: "Enderecos",
-                type: "varchar(50)",
-                maxLength: 50,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "varchar(51)",
-                oldMaxLength: 50);
+                                                 "Bairro",
+                                                 "Enderecos",
+                                                 "varchar(50)",
+                                                 maxLength: 50,
+                                                 nullable: false,
+                                                 oldClrType: typeof(string),
+                                                 oldType: "varchar(51)",
+                                                 oldMaxLength: 50);
         }
     }
 }

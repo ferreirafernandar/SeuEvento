@@ -1,16 +1,15 @@
-﻿using SeuEvento.Domain.Core.Bus;
+﻿using System;
+using SeuEvento.Domain.Core.Bus;
 using SeuEvento.Domain.Core.Commands;
 using SeuEvento.Domain.Core.Events;
 using SeuEvento.Domain.Core.Notifications;
 using SeuEvento.Domain.Eventos.Commands;
 using SeuEvento.Domain.Eventos.Events;
-using System;
 
 namespace ConsoleTest
 {
     public class FakeBus : IBus
     {
-
         public void RaiseEvent<T>(T theEvent) where T : Event
         {
             Publish(theEvent);
@@ -19,7 +18,7 @@ namespace ConsoleTest
         public void SendCommand<T>(T theCommand) where T : Command
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Comando { theCommand.MessageType } Lançado");
+            Console.WriteLine($"Comando {theCommand.MessageType} Lançado");
             Publish(theCommand);
         }
 

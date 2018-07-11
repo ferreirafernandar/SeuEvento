@@ -9,7 +9,7 @@ namespace SeuEvento.Infra.Data.Context
 {
     public class EventoContext : DbContext
     {
-    public DbSet<Evento> Eventos { get; set; }
+        public DbSet<Evento> Eventos { get; set; }
         public DbSet<Organizador> Organizadores { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }

@@ -7,83 +7,83 @@ namespace SeuEvento.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "varchar(150)",
-                table: "Organizadores",
-                newName: "Nome");
+                                          "varchar(150)",
+                                          "Organizadores",
+                                          "Nome");
 
             migrationBuilder.RenameColumn(
-                name: "varchar(100)",
-                table: "Organizadores",
-                newName: "Email");
+                                          "varchar(100)",
+                                          "Organizadores",
+                                          "Email");
 
             migrationBuilder.RenameColumn(
-                name: "varchar(11)",
-                table: "Organizadores",
-                newName: "Cpf");
+                                          "varchar(11)",
+                                          "Organizadores",
+                                          "Cpf");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Nome",
-                table: "Organizadores",
-                type: "varchar(150)",
-                nullable: false,
-                oldClrType: typeof(string));
+                                                 "Nome",
+                                                 "Organizadores",
+                                                 "varchar(150)",
+                                                 nullable: false,
+                                                 oldClrType: typeof(string));
 
             migrationBuilder.AlterColumn<string>(
-                name: "Email",
-                table: "Organizadores",
-                type: "varchar(100)",
-                nullable: false,
-                oldClrType: typeof(string));
+                                                 "Email",
+                                                 "Organizadores",
+                                                 "varchar(100)",
+                                                 nullable: false,
+                                                 oldClrType: typeof(string));
 
             migrationBuilder.AlterColumn<string>(
-                name: "Cpf",
-                table: "Organizadores",
-                type: "varchar(11)",
-                maxLength: 11,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldMaxLength: 11);
+                                                 "Cpf",
+                                                 "Organizadores",
+                                                 "varchar(11)",
+                                                 maxLength: 11,
+                                                 nullable: false,
+                                                 oldClrType: typeof(string),
+                                                 oldMaxLength: 11);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "Nome",
-                table: "Organizadores",
-                newName: "varchar(150)");
+                                          "Nome",
+                                          "Organizadores",
+                                          "varchar(150)");
 
             migrationBuilder.RenameColumn(
-                name: "Email",
-                table: "Organizadores",
-                newName: "varchar(100)");
+                                          "Email",
+                                          "Organizadores",
+                                          "varchar(100)");
 
             migrationBuilder.RenameColumn(
-                name: "Cpf",
-                table: "Organizadores",
-                newName: "varchar(11)");
+                                          "Cpf",
+                                          "Organizadores",
+                                          "varchar(11)");
 
             migrationBuilder.AlterColumn<string>(
-                name: "varchar(150)",
-                table: "Organizadores",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "varchar(150)");
+                                                 "varchar(150)",
+                                                 "Organizadores",
+                                                 nullable: false,
+                                                 oldClrType: typeof(string),
+                                                 oldType: "varchar(150)");
 
             migrationBuilder.AlterColumn<string>(
-                name: "varchar(100)",
-                table: "Organizadores",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "varchar(100)");
+                                                 "varchar(100)",
+                                                 "Organizadores",
+                                                 nullable: false,
+                                                 oldClrType: typeof(string),
+                                                 oldType: "varchar(100)");
 
             migrationBuilder.AlterColumn<string>(
-                name: "varchar(11)",
-                table: "Organizadores",
-                maxLength: 11,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "varchar(11)",
-                oldMaxLength: 11);
+                                                 "varchar(11)",
+                                                 "Organizadores",
+                                                 maxLength: 11,
+                                                 nullable: false,
+                                                 oldClrType: typeof(string),
+                                                 oldType: "varchar(11)",
+                                                 oldMaxLength: 11);
         }
     }
 }

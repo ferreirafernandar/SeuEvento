@@ -2,15 +2,15 @@
 
 namespace SeuEvento.Application.AutoMapper
 {
-  public class AutoMapperConfiguration
-  {
-    public static MapperConfiguration RegisterMappings()
+    public class AutoMapperConfiguration
     {
-      return new MapperConfiguration(ps =>
-      {
-        ps.AddProfile(new DomainToViewModelMappingProfile());
-        ps.AddProfile(new ViewModelToDomainMappingProfile());
-      });
+        public static MapperConfiguration RegisterMappings()
+        {
+            return new MapperConfiguration(ps =>
+                                           {
+                                               ps.AddProfile(new DomainToViewModelMappingProfile());
+                                               ps.AddProfile(new ViewModelToDomainMappingProfile());
+                                           });
+        }
     }
-  }
 }

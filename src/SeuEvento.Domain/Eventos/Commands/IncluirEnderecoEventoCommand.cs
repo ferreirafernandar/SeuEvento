@@ -18,14 +18,14 @@ namespace SeuEvento.Domain.Eventos.Commands
             EventoId = eventoId;
         }
 
-        public Guid Id { get; private set; }
-        public string Logradouro { get; private set; }
-        public string Numero { get; private set; }
-        public string Complemento { get; private set; }
-        public string Bairro { get; private set; }
-        public string Cep { get; private set; }
-        public string Cidade { get; private set; }
-        public string Estado { get; private set; }
-        public Guid? EventoId { get; private set; }
+        public Guid Id { get; }
+        public string Logradouro { get; }
+        public string Numero { get; }
+        public string Complemento { get; }
+        public string Bairro { get; }
+        public string Cep { get; }
+        public string Cidade { get; }
+        public string Estado { get; }
+        public Guid? EventoId { get; }
     }
 }

@@ -8,7 +8,9 @@ namespace SeuEvento.Domain.Eventos
     {
         public Categoria(Guid id) => Id = id;
 
-        protected Categoria() { }
+        protected Categoria()
+        {
+        }
 
         public string Nome { get; private set; }
 

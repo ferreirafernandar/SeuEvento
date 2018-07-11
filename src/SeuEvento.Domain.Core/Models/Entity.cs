@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using System;
+﻿using System;
+using FluentValidation;
 using FluentValidation.Results;
 
 namespace SeuEvento.Domain.Core.Models
@@ -9,9 +9,10 @@ namespace SeuEvento.Domain.Core.Models
         protected Entity() => ValidationResult = new ValidationResult();
 
         public Guid Id { get; protected set; }
+        public ValidationResult ValidationResult { get; protected set; }
 
         public abstract bool EhValido();
-        public ValidationResult ValidationResult { get; protected set; }
+
         public override bool Equals(object obj)
         {
             var compareTo = obj as Entity<T>;

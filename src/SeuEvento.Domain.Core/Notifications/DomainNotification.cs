@@ -13,9 +13,9 @@ namespace SeuEvento.Domain.Core.Notifications
             Version = 1;
         }
 
-        public Guid DomainNotificationId { get; private set; }
-        public string Key { get; private set; }
-        public string Value { get; private set; }
-        public int Version { get; private set; }
+        public Guid DomainNotificationId { get; }
+        public string Key { get; }
+        public string Value { get; }
+        public int Version { get; }
     }
 }

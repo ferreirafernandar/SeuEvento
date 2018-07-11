@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SeuEvento.Domain.Eventos;
 using SeuEvento.Domain.Organizadores;
 
 namespace SeuEvento.Infra.Data.Mappings

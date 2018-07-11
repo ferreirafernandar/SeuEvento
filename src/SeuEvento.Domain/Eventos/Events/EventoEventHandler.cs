@@ -8,12 +8,6 @@ namespace SeuEvento.Domain.Eventos.Events
         IHandler<EventoAtualizadoEvent>,
         IHandler<EventoExcluidoEvent>
     {
-        public void Handle(EventoRegistradoEvent message)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Evento registrado com sucesso");
-        }
-
         public void Handle(EventoAtualizadoEvent message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -24,6 +18,12 @@ namespace SeuEvento.Domain.Eventos.Events
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Evento excluido com sucesso");
+        }
+
+        public void Handle(EventoRegistradoEvent message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Evento registrado com sucesso");
         }
     }
 }
