@@ -11,10 +11,10 @@ namespace SeuEvento.Infra.Data.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity<TEntity>
     {
-        public EventoContext Db;
+        public EventosContext Db;
         public DbSet<TEntity> DbSet;
 
-        public Repository(EventoContext context)
+        public Repository(EventosContext context)
         {
             Db = context;
             DbSet = Db.Set<TEntity>();

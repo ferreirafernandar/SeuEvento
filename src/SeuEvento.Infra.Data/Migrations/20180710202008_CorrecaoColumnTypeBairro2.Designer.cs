@@ -9,7 +9,7 @@ using SeuEvento.Infra.Data.Context;
 
 namespace SeuEvento.Infra.Data.Migrations
 {
-    [DbContext(typeof(EventoContext))]
+    [DbContext(typeof(EventosContext))]
     [Migration("20180710202008_CorrecaoColumnTypeBairro2")]
     partial class CorrecaoColumnTypeBairro2
     {

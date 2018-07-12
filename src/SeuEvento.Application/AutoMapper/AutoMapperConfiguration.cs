@@ -6,10 +6,10 @@ namespace SeuEvento.Application.AutoMapper
     {
         public static MapperConfiguration RegisterMappings()
         {
-            return new MapperConfiguration(ps =>
+            return new MapperConfiguration(p =>
                                            {
-                                               ps.AddProfile(new DomainToViewModelMappingProfile());
-                                               ps.AddProfile(new ViewModelToDomainMappingProfile());
+                                               p.AddProfile(new DomainToViewModelMappingProfile());
+                                               p.AddProfile(new ViewModelToDomainMappingProfile());
                                            });
         }
     }

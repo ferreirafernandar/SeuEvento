@@ -7,6 +7,7 @@ namespace SeuEvento.Domain.Eventos.Commands
         public ExcluirEventoCommand(Guid id)
         {
             Id = id;
+
             AggregateId = Id;
         }
     }

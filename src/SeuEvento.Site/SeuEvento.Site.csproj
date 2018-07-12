@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-SeuEvento.Site-F0A88CA4-A23B-4989-BAFE-688981FBCAD5</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SeuEvento.Application\SeuEvento.Application.csproj" />
+    <ProjectReference Include="..\SeuEvento.Infra.CrossCutting.IoC\SeuEvento.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\SeuEvento.Infra.Data\SeuEvento.Infra.Data.csproj" />
+    <ProjectReference Include="..\SeuEvento.IO.Infra.CrossCutting.Bus\SeuEvento.IO.Infra.CrossCutting.Bus.csproj" />
+  </ItemGroup>
+
+</Project>

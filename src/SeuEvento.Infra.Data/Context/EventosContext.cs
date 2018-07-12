@@ -7,7 +7,7 @@ using SeuEvento.Infra.Data.Mappings;
 
 namespace SeuEvento.Infra.Data.Context
 {
-    public class EventoContext : DbContext
+    public class EventosContext : DbContext
     {
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Organizador> Organizadores { get; set; }

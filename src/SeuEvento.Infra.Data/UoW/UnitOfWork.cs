@@ -6,9 +6,9 @@ namespace SeuEvento.Infra.Data.UoW
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly EventoContext _context;
+        private readonly EventosContext _context;
 
-        public UnitOfWork(EventoContext context)
+        public UnitOfWork(EventosContext context)
         {
             _context = context;
         }

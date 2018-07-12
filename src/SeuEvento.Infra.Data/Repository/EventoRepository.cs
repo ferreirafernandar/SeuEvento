@@ -9,7 +9,7 @@ namespace SeuEvento.Infra.Data.Repository
 {
     public class EventoRepository : Repository<Evento>, IEventoRepository
     {
-        public EventoRepository(EventoContext context) : base(context)
+        public EventoRepository(EventosContext context) : base(context)
         {
         }
 

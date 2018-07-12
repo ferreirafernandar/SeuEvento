@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SeuEvento.Application\SeuEvento.Application.csproj" />
+    <ProjectReference Include="..\SeuEvento.Infra.CrossCutting.Bus\SeuEvento.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\SeuEvento.Infra.Data\SeuEvento.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

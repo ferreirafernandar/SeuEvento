@@ -8,7 +8,7 @@ using SeuEvento.Infra.Data.Context;
 
 namespace SeuEvento.Infra.Data.Migrations
 {
-    [DbContext(typeof(EventoContext))]
+    [DbContext(typeof(EventosContext))]
     internal class EventoContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
