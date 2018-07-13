@@ -16,6 +16,9 @@ namespace SeuEvento.Application.AutoMapper
                 .ConstructUsing(c => new RegistrarEventoCommand(c.Nome, c.DescricaoCurta, c.DescricaoLonga, c.DataInicio, c.DataFim, c.Gratuito, c.Valor, c.Online, c.NomeEmpresa, c.OrganizadorId, c.CategoriaId,
                                                                 new IncluirEnderecoEventoCommand(c.Endereco.Id, c.Endereco.Logradouro, c.Endereco.Numero, c.Endereco.Complemento, c.Endereco.Bairro, c.Endereco.Cep, c.Endereco.Cidade, c.Endereco.Estado, c.Id)));
 
+            CreateMap<EnderecoViewModel, IncluirEnderecoEventoCommand>()
+                .ConstructUsing(e => new IncluirEnderecoEventoCommand(Guid.NewGuid(), e.Logradouro, e.Numero, e.Complemento, e.Bairro, e.Cep, e.Cidade, e.Estado, e.EventoId));
+
             CreateMap<EventoViewModel, AtualizarEventoCommand>()
                 .ConstructUsing(c => new AtualizarEventoCommand(c.Id, c.Nome, c.DescricaoCurta, c.DescricaoLonga, c.DataInicio, c.DataFim, c.Gratuito, c.Valor, c.Online, c.NomeEmpresa, c.OrganizadorId, c.CategoriaId));
 

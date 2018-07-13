@@ -31,12 +31,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Categoria" class="control-label"></label>
-                @{
-                    var categoria = (IEnumerable<SelectListItem>)new CategoriaViewModel().Categorias();
-                }
-                <select asp-for="CategoriaId" asp-items="@categoria" class="form-control">
-                    <option value="value">text</option>
-                </select>
+                @Html.Partial("_Categorias")
                 <span asp-validation-for="Categoria" class="text-danger"></span>
             </div>
             <div class="form-group">

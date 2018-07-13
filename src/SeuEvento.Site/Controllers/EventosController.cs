@@ -41,11 +41,11 @@ namespace SeuEvento.Site.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(EventoViewModel eventoViewModel)
         {
-            if (ModelState.IsValid) return View(eventoViewModel);
+            if (!ModelState.IsValid) return View(eventoViewModel);
 
             _eventoAppService.Registrar(eventoViewModel);
 
-            return View(eventoViewModel);
+            return RedirectToAction("Index");
         }
 
         // GET: Eventos/Edit/5

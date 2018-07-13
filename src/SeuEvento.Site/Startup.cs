@@ -39,6 +39,7 @@ namespace SeuEvento.Site
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAutoMapper();
+
             RegisterService(services);
         }
 
@@ -66,7 +67,7 @@ namespace SeuEvento.Site
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Eventos}/{action=Index}/{id?}");
             });
 
             InMemoryBus.ContainerAccessor = () => accessor.HttpContext.RequestServices;

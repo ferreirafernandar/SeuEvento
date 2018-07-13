@@ -32,16 +32,16 @@ namespace SeuEvento.Domain.Eventos
         {
         }
 
-        public string Logradouro { get; }
-        public string Numero { get; }
-        public string Complemento { get; }
-        public string Bairro { get; }
-        public string Cep { get; }
-        public string Cidade { get; }
-        public string Estado { get; }
+        public string Logradouro { get; private set; }
+        public string Numero { get; private set; }
+        public string Complemento { get; private set; }
+        public string Bairro { get; private set; }
+        public string Cep { get; private set; }
+        public string Cidade { get; private set; }
+        public string Estado { get; private set; }
 
         //Chave de relacionamento com evento
-        public Guid? EventoId { get; }
+        public Guid? EventoId { get; private set; }
         public virtual Evento Evento { get; private set; }
 
         public override bool EhValido()
