@@ -73,7 +73,7 @@ namespace SeuEvento.Domain.Eventos.Commands
         {
             if (evento.EhValido()) return true;
 
-            NotificarValicacoesErro(evento.ValidationResult);
+            NotificarValidacoesErro(evento.ValidationResult);
             return false;
         }
 

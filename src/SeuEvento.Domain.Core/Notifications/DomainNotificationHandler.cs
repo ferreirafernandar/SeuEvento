@@ -16,12 +16,12 @@ namespace SeuEvento.Domain.Core.Notifications
             Console.WriteLine($"Erro {message.Key} - {message.Value}");
         }
 
-        public bool HasNotification()
+        public bool HasNotifications()
         {
             return _notifications.Any();
         }
 
-        public List<DomainNotification> GetNotification()
+        public List<DomainNotification> GetNotifications()
         {
             return _notifications;
         }

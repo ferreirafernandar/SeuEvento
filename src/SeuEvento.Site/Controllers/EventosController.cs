@@ -2,14 +2,18 @@
 using SeuEvento.Application.Interfaces;
 using SeuEvento.Application.ViewModels;
 using System;
+using SeuEvento.Domain.Core.Notifications;
+using SeuEvento.Domain.Interfaces;
 
 namespace SeuEvento.Site.Controllers
 {
-    public class EventosController : Controller
+    public class EventosController : BaseController
     {
         private readonly IEventoAppService _eventoAppService;
 
-        public EventosController(IEventoAppService eventoAppService)
+        public EventosController(IEventoAppService eventoAppService,
+            IDomainNotificationHandler<DomainNotification> notifications,
+            IUser user) : base(notifications, user)
         {
             _eventoAppService = eventoAppService;
         }
@@ -43,9 +47,12 @@ namespace SeuEvento.Site.Controllers
         {
             if (!ModelState.IsValid) return View(eventoViewModel);
 
+            eventoViewModel.OrganizadorId = OrganizadorId;
             _eventoAppService.Registrar(eventoViewModel);
 
-            return RedirectToAction("Index");
+            ViewBag.RetornoPost = OperacaoValida() ? "success,Evento registrado com sucesso!" : "error,Evento n�o registrado! Verifique as mensagens";
+
+            return View(eventoViewModel);
         }
 
         // GET: Eventos/Edit/5
@@ -70,6 +77,8 @@ namespace SeuEvento.Site.Controllers
             if (!ModelState.IsValid) return View(eventoViewModel);
 
             _eventoAppService.Atualizar(eventoViewModel);
+
+            ViewBag.RetornoPost = OperacaoValida() ? "success,Evento atualizado com sucesso!" : "error,Evento n�o ser atualizado! Verifique as mensagens";
 
             return View(eventoViewModel);
         }

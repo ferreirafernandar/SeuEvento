@@ -10,10 +10,13 @@ using SeuEvento.Domain.Eventos.Commands;
 using SeuEvento.Domain.Eventos.Events;
 using SeuEvento.Domain.Eventos.Repository;
 using SeuEvento.Domain.Interfaces;
+using SeuEvento.Domain.Organizadores.Commands;
+using SeuEvento.Domain.Organizadores.Events;
+using SeuEvento.Domain.Organizadores.Repository;
+using SeuEvento.Infra.CrossCutting.Bus;
 using SeuEvento.Infra.Data.Context;
 using SeuEvento.Infra.Data.Repository;
 using SeuEvento.Infra.Data.UoW;
-using SeuEvento.IO.Infra.CrossCutting.Bus;
 
 namespace SeuEvento.Infra.CrossCutting.IoC
 {
@@ -36,7 +39,7 @@ namespace SeuEvento.Infra.CrossCutting.IoC
             services.AddScoped<IHandler<ExcluirEventoCommand>, EventoCommandHandler>();
             //services.AddScoped<IHandler<AtualizarEnderecoEventoCommand>, EventoCommandHandler>();
             //services.AddScoped<IHandler<IncluirEnderecoEventoCommand>, EventoCommandHandler>();
-            //services.AddScoped<IHandler<RegistrarOrganizadorCommand>, OrganizadorCommandHandler>();
+            services.AddScoped<IHandler<RegistrarOrganizadorCommand>, OrganizadorCommandHandler>();
 
             // Domain - Eventos
             services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
@@ -45,11 +48,11 @@ namespace SeuEvento.Infra.CrossCutting.IoC
             services.AddScoped<IHandler<EventoExcluidoEvent>, EventoEventHandler>();
             //services.AddScoped<IHandler<EnderecoEventoAtualizadoEvent>, EventoEventHandler>();
             //services.AddScoped<IHandler<EnderecoEventoAdicionadoEvent>, EventoEventHandler>();
-            //services.AddScoped<IHandler<OrganizadorRegistradoEvent>, OrganizadorEventHandler>();
+            services.AddScoped<IHandler<OrganizadorRegistradoEvent>, OrganizadorEventHandler>();
 
             // Infra - Data
             services.AddScoped<IEventoRepository, EventoRepository>();
-            //services.AddScoped<IOrganizadorRepository, OrganizadorRepository>();
+            services.AddScoped<IOrganizadorRepository, OrganizadorRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<EventosContext>();
 

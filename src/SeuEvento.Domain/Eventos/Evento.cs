@@ -53,7 +53,7 @@ namespace SeuEvento.Domain.Eventos
         public virtual Endereco Endereco { get; private set; }
         public virtual Organizador Organizador { get; private set; }
 
-        public void AtribuirEndereço(Endereco endereco)
+        public void AtribuirEndereco(Endereco endereco)
         {
             if (!endereco.EhValido()) return;
             Endereco = endereco;

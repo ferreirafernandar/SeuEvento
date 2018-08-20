@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
   </ItemGroup>
 
@@ -15,7 +16,7 @@
     <ProjectReference Include="..\SeuEvento.Application\SeuEvento.Application.csproj" />
     <ProjectReference Include="..\SeuEvento.Infra.CrossCutting.IoC\SeuEvento.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\SeuEvento.Infra.Data\SeuEvento.Infra.Data.csproj" />
-    <ProjectReference Include="..\SeuEvento.IO.Infra.CrossCutting.Bus\SeuEvento.IO.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\SeuEvento.IO.Infra.CrossCutting.Bus\SeuEvento.Infra.CrossCutting.Bus.csproj" />
   </ItemGroup>
 
 </Project>

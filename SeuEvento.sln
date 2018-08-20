@@ -27,11 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeuEvento.Infra.Data", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeuEvento.Application", "src\SeuEvento.Application\SeuEvento.Application.csproj", "{D2ED9235-BBBC-46CA-9727-DC5173E1991D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeuEvento.Site", "src\SeuEvento.Site\SeuEvento.Site.csproj", "{28B57684-358A-4DB5-9566-52980C2FE6EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeuEvento.Site", "src\SeuEvento.Site\SeuEvento.Site.csproj", "{28B57684-358A-4DB5-9566-52980C2FE6EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeuEvento.Infra.CrossCutting.IoC", "src\SeuEvento.Infra.CrossCutting.IoC\SeuEvento.Infra.CrossCutting.IoC.csproj", "{0F947504-F789-4149-85C9-B642CE8AE0F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeuEvento.Infra.CrossCutting.IoC", "src\SeuEvento.Infra.CrossCutting.IoC\SeuEvento.Infra.CrossCutting.IoC.csproj", "{0F947504-F789-4149-85C9-B642CE8AE0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeuEvento.IO.Infra.CrossCutting.Bus", "src\SeuEvento.IO.Infra.CrossCutting.Bus\SeuEvento.IO.Infra.CrossCutting.Bus.csproj", "{FB9E6157-61EB-469C-8C17-EB62367B046E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeuEvento.Infra.CrossCutting.Bus", "src\SeuEvento.IO.Infra.CrossCutting.Bus\SeuEvento.Infra.CrossCutting.Bus.csproj", "{FB9E6157-61EB-469C-8C17-EB62367B046E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Dapper;
+using Microsoft.EntityFrameworkCore;
 using SeuEvento.Domain.Eventos;
 using SeuEvento.Domain.Eventos.Repository;
 using SeuEvento.Infra.Data.Context;
@@ -13,14 +15,53 @@ namespace SeuEvento.Infra.Data.Repository
         {
         }
 
+        public override IEnumerable<Evento> ObterTodos()
+        {
+            const string sql = "SELECT * FROM EVENTOS E " +
+                            
+                               "ORDER BY E.DATAFIM DESC ";
+
+            return Db.Database.GetDbConnection().Query<Evento>(sql);
+        }
+
+        public override Evento ObterPorId(Guid id)
+        {
+            const string sql = @"SELECT * FROM Eventos E " +
+                               "LEFT JOIN Enderecos EN " +
+                               "ON E.Id = EN.EventoId " +
+                               "WHERE E.Id = @uid";
+
+            var evento = Db.Database.GetDbConnection().Query<Evento, Endereco, Evento>(sql,
+                (e, en) =>
+                {
+                    if (en != null)
+                        e.AtribuirEndereco(en);
+
+                    return e;
+                }, new { uid = id });
+
+            return evento.FirstOrDefault();
+        }
+
         public IEnumerable<Evento> ObterEventoPorOrganizador(Guid organizadorId)
         {
-            return Db.Eventos.Where(e => e.OrganizadorId == organizadorId);
+            const string sql = @"SELECT * FROM EVENTOS E " +
+                               "WHERE E.EXCLUIDO = 0 " +
+                               "AND E.ORGANIZADORID = @oid " +
+                               "ORDER BY E.DATAFIM DESC";
+
+            //throw new Exception("Ocorreu um erro");
+            return Db.Database.GetDbConnection().Query<Evento>(sql, new { oid = organizadorId });
         }
 
         public Endereco ObterEnderecoPorId(Guid id)
         {
-            return Db.Enderecos.Find(id);
+            const string sql = @"SELECT * FROM Enderecos E " +
+                               "WHERE E.Id = @uid";
+
+            var endereco = Db.Database.GetDbConnection().Query<Endereco>(sql, new { uid = id });
+
+            return endereco.SingleOrDefault();
         }
 
         public void AdicionarEndereco(Endereco endereco)

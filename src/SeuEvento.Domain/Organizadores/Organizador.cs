@@ -7,9 +7,12 @@ namespace SeuEvento.Domain.Organizadores
 {
     public class Organizador : Entity<Organizador>
     {
-        public Organizador(Guid id)
+        public Organizador(Guid id, string nome, string cpf, string email)
         {
             Id = id;
+            Nome = nome;
+            Cpf = cpf;
+            Email = email;
         }
 
         // EF Construtor

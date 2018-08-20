@@ -19,7 +19,7 @@ namespace SeuEvento.Domain.CommandHandlers
             _notifications = notifications;
         }
 
-        protected void NotificarValicacoesErro(ValidationResult validationResult)
+        protected void NotificarValidacoesErro(ValidationResult validationResult)
         {
             foreach (var error in validationResult.Errors)
             {
@@ -30,7 +30,7 @@ namespace SeuEvento.Domain.CommandHandlers
 
         protected bool Commit()
         {
-            if (_notifications.HasNotification()) return false;
+            if (_notifications.HasNotifications()) return false;
             var commandResponse = _uow.Commit();
             if (commandResponse.Success) return true;
 

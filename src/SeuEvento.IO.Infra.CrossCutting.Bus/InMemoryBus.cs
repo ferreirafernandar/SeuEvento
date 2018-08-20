@@ -1,10 +1,10 @@
-﻿using SeuEvento.Domain.Core.Bus;
+﻿using System;
+using SeuEvento.Domain.Core.Bus;
 using SeuEvento.Domain.Core.Commands;
 using SeuEvento.Domain.Core.Events;
 using SeuEvento.Domain.Core.Notifications;
-using System;
 
-namespace SeuEvento.IO.Infra.CrossCutting.Bus
+namespace SeuEvento.Infra.CrossCutting.Bus
 {
     public class InMemoryBus : IBus
     {
