@@ -14,6 +14,8 @@ using SeuEvento.Domain.Organizadores.Commands;
 using SeuEvento.Domain.Organizadores.Events;
 using SeuEvento.Domain.Organizadores.Repository;
 using SeuEvento.Infra.CrossCutting.Bus;
+using SeuEvento.Infra.CrossCutting.Identity.Models;
+using SeuEvento.Infra.CrossCutting.Identity.Services;
 using SeuEvento.Infra.Data.Context;
 using SeuEvento.Infra.Data.Repository;
 using SeuEvento.Infra.Data.UoW;
@@ -37,8 +39,8 @@ namespace SeuEvento.Infra.CrossCutting.IoC
             services.AddScoped<IHandler<RegistrarEventoCommand>, EventoCommandHandler>();
             services.AddScoped<IHandler<AtualizarEventoCommand>, EventoCommandHandler>();
             services.AddScoped<IHandler<ExcluirEventoCommand>, EventoCommandHandler>();
-            //services.AddScoped<IHandler<AtualizarEnderecoEventoCommand>, EventoCommandHandler>();
-            //services.AddScoped<IHandler<IncluirEnderecoEventoCommand>, EventoCommandHandler>();
+            services.AddScoped<IHandler<AtualizarEnderecoEventoCommand>, EventoCommandHandler>();
+            services.AddScoped<IHandler<IncluirEnderecoEventoCommand>, EventoCommandHandler>();
             services.AddScoped<IHandler<RegistrarOrganizadorCommand>, OrganizadorCommandHandler>();
 
             // Domain - Eventos
@@ -46,8 +48,8 @@ namespace SeuEvento.Infra.CrossCutting.IoC
             services.AddScoped<IHandler<EventoRegistradoEvent>, EventoEventHandler>();
             services.AddScoped<IHandler<EventoAtualizadoEvent>, EventoEventHandler>();
             services.AddScoped<IHandler<EventoExcluidoEvent>, EventoEventHandler>();
-            //services.AddScoped<IHandler<EnderecoEventoAtualizadoEvent>, EventoEventHandler>();
-            //services.AddScoped<IHandler<EnderecoEventoAdicionadoEvent>, EventoEventHandler>();
+            services.AddScoped<IHandler<EnderecoEventoAtualizadoEvent>, EventoEventHandler>();
+            services.AddScoped<IHandler<EnderecoEventoAdicionadoEvent>, EventoEventHandler>();
             services.AddScoped<IHandler<OrganizadorRegistradoEvent>, OrganizadorEventHandler>();
 
             // Infra - Data
@@ -60,9 +62,9 @@ namespace SeuEvento.Infra.CrossCutting.IoC
             services.AddScoped<IBus, InMemoryBus>();
 
             // Infra - Identity
-            //services.AddTransient<IEmailSender, AuthMessageSender>();
-            //services.AddTransient<ISmsSender, AuthMessageSender>();
-            //services.AddScoped<IUser, AspNetUser>();
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddScoped<IUser, AspNetUser>();
 
             // Infra - Filtros
             //services.AddScoped<ILogger<GlobalExceptionHandlingFilter>, Logger<GlobalExceptionHandlingFilter>>();

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SeuEvento.Application\SeuEvento.Application.csproj" />
+    <ProjectReference Include="..\SeuEvento.Infra.CrossCutting.Identity\SeuEvento.Infra.CrossCutting.Identity.csproj" />
     <ProjectReference Include="..\SeuEvento.Infra.CrossCutting.IoC\SeuEvento.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\SeuEvento.Infra.Data\SeuEvento.Infra.Data.csproj" />
     <ProjectReference Include="..\SeuEvento.IO.Infra.CrossCutting.Bus\SeuEvento.Infra.CrossCutting.Bus.csproj" />

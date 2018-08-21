@@ -40,7 +40,7 @@ namespace SeuEvento.Domain.Eventos
         public decimal Valor { get; private set; }
         public bool Online { get; private set; }
         public string NomeEmpresa { get; private set; }
-        public bool Ativo { get; private set; }
+        public bool Excluido { get; private set; }
         public ICollection<Tags> Tags { get; private set; }
 
         //Chaves estrangeiras
@@ -67,7 +67,7 @@ namespace SeuEvento.Domain.Eventos
 
         public void ExcluirEvento()
         {
-            Ativo = true;
+            Excluido = true;
         }
 
         public override bool EhValido()

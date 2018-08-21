@@ -6,6 +6,7 @@ using SeuEvento.Application.ViewModels;
 using SeuEvento.Domain.Core.Bus;
 using SeuEvento.Domain.Eventos.Commands;
 using SeuEvento.Domain.Eventos.Repository;
+using SeuEvento.Domain.Interfaces;
 
 namespace SeuEvento.Application.Services
 {
@@ -14,14 +15,16 @@ namespace SeuEvento.Application.Services
         private readonly IBus _bus;
         private readonly IEventoRepository _eventoRepository;
         private readonly IMapper _mapper;
+        private readonly IUser _user;
 
         public EventoAppService(IBus bus,
                                 IMapper mapper,
-                                IEventoRepository eventoRepository)
+                                IEventoRepository eventoRepository, IUser user)
         {
             _bus = bus;
             _mapper = mapper;
             _eventoRepository = eventoRepository;
+            _user = user;
         }
 
         public void Registrar(EventoViewModel eventoViewModel)
@@ -58,6 +61,8 @@ namespace SeuEvento.Application.Services
             _bus.SendCommand(new ExcluirEventoCommand(id));
         }
 
+        #region Endereço
+
         public void AdicionarEndereco(EnderecoViewModel enderecoViewModel)
         {
             var enderecoCommand = _mapper.Map<IncluirEnderecoEventoCommand>(enderecoViewModel);
@@ -74,6 +79,8 @@ namespace SeuEvento.Application.Services
         {
             return _mapper.Map<EnderecoViewModel>(_eventoRepository.ObterEnderecoPorId(id));
         }
+
+        #endregion
 
         public void Dispose()
         {

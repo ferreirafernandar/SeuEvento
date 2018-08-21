@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SeuEvento.Site.Models;
-using SeuEvento.Site.Models.ManageViewModels;
-using SeuEvento.Site.Services;
+using System.Linq;
+using System.Threading.Tasks;
+using SeuEvento.Infra.CrossCutting.Identity.Models;
+using SeuEvento.Infra.CrossCutting.Identity.Models.ManageViewModels;
+using SeuEvento.Infra.CrossCutting.Identity.Services;
 
 namespace SeuEvento.Site.Controllers
 {

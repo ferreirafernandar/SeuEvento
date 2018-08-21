@@ -18,7 +18,7 @@ namespace SeuEvento.Infra.Data.Repository
         public override IEnumerable<Evento> ObterTodos()
         {
             const string sql = "SELECT * FROM EVENTOS E " +
-                            
+                               "WHERE E.EXCLUIDO = 0 " +
                                "ORDER BY E.DATAFIM DESC ";
 
             return Db.Database.GetDbConnection().Query<Evento>(sql);
@@ -54,6 +54,15 @@ namespace SeuEvento.Infra.Data.Repository
             return Db.Database.GetDbConnection().Query<Evento>(sql, new { oid = organizadorId });
         }
 
+        public override void Remover(Guid id)
+        {
+            var evento = ObterPorId(id);
+            evento.ExcluirEvento();
+            Atualizar(evento);
+        }
+
+        #region Endereço
+
         public Endereco ObterEnderecoPorId(Guid id)
         {
             const string sql = @"SELECT * FROM Enderecos E " +
@@ -73,5 +82,7 @@ namespace SeuEvento.Infra.Data.Repository
         {
             Db.Enderecos.Update(endereco);
         }
+
+        #endregion
     }
 }

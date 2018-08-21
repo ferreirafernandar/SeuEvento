@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +9,14 @@ using SeuEvento.Application.Interfaces;
 using SeuEvento.Application.ViewModels;
 using SeuEvento.Domain.Core.Notifications;
 using SeuEvento.Domain.Interfaces;
-using SeuEvento.Site.Models;
-using SeuEvento.Site.Models.AccountViewModels;
-using SeuEvento.Site.Services;
+using System;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using SeuEvento.Infra.CrossCutting.Identity.Models;
+using SeuEvento.Infra.CrossCutting.Identity.Models.AccountViewModels;
+using SeuEvento.Infra.CrossCutting.Identity.Services;
+using IEmailSender = Microsoft.AspNetCore.Identity.UI.Services.IEmailSender;
 
 namespace SeuEvento.Site.Controllers
 {

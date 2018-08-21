@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SeuEvento.Domain.Interfaces;
-using SeuEvento.Infra.CrossCutting.IoC;
 using SeuEvento.Infra.CrossCutting.Bus;
-using SeuEvento.Site.Data;
-using SeuEvento.Site.Models;
-using SeuEvento.Site.Services;
+using SeuEvento.Infra.CrossCutting.Identity.Data;
+using SeuEvento.Infra.CrossCutting.Identity.Models;
+using SeuEvento.Infra.CrossCutting.Identity.Services;
+using SeuEvento.Infra.CrossCutting.IoC;
 
 namespace SeuEvento.Site
 {
@@ -42,10 +42,6 @@ namespace SeuEvento.Site
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAutoMapper();
-
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddScoped<IUser, AspNetUser>();
 
             RegisterService(services);
         }
