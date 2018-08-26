@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using SeuEvento.Application.Interfaces;
 using SeuEvento.Application.Services;
 using SeuEvento.Domain.Core.Bus;
@@ -13,6 +14,7 @@ using SeuEvento.Domain.Interfaces;
 using SeuEvento.Domain.Organizadores.Commands;
 using SeuEvento.Domain.Organizadores.Events;
 using SeuEvento.Domain.Organizadores.Repository;
+using SeuEvento.Infra.CrossCutting.AspNetFilters;
 using SeuEvento.Infra.CrossCutting.Bus;
 using SeuEvento.Infra.CrossCutting.Identity.Models;
 using SeuEvento.Infra.CrossCutting.Identity.Services;
@@ -67,10 +69,10 @@ namespace SeuEvento.Infra.CrossCutting.IoC
             services.AddScoped<IUser, AspNetUser>();
 
             // Infra - Filtros
-            //services.AddScoped<ILogger<GlobalExceptionHandlingFilter>, Logger<GlobalExceptionHandlingFilter>>();
-            //services.AddScoped<ILogger<GlobalActionLogger>, Logger<GlobalActionLogger>>();
-            //services.AddScoped<GlobalExceptionHandlingFilter>();
-            //services.AddScoped<GlobalActionLogger>();
+            services.AddScoped<ILogger<GlobalExceptionHandlingFilter>, Logger<GlobalExceptionHandlingFilter>>();
+            services.AddScoped<ILogger<GlobalActionLogger>, Logger<GlobalActionLogger>>();
+            services.AddScoped<GlobalExceptionHandlingFilter>();
+            services.AddScoped<GlobalActionLogger>();
         }
     }
 }

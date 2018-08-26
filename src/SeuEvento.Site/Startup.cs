@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
+using Elmah.Io.AspNetCore;
+using Elmah.Io.Extensions.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,12 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SeuEvento.Domain.Interfaces;
 using SeuEvento.Infra.CrossCutting.Bus;
 using SeuEvento.Infra.CrossCutting.Identity.Data;
-using SeuEvento.Infra.CrossCutting.Identity.Models;
-using SeuEvento.Infra.CrossCutting.Identity.Services;
 using SeuEvento.Infra.CrossCutting.IoC;
+using Microsoft.Extensions.Logging;
+using SeuEvento.Infra.CrossCutting.AspNetFilters;
 
 namespace SeuEvento.Site
 {
@@ -39,7 +41,19 @@ namespace SeuEvento.Site
 
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("PodeLerEventos", policy => policy.RequireClaim("Eventos", "Ler"));
+                options.AddPolicy("PodeGravar", policy => policy.RequireClaim("Eventos", "Gravar"));
+            });
+
+            services.AddLogging();
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new ServiceFilterAttribute(typeof(GlobalExceptionHandlingFilter)));
+                options.Filters.Add(new ServiceFilterAttribute(typeof(GlobalActionLogger)));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAutoMapper();
 
@@ -47,8 +61,14 @@ namespace SeuEvento.Site
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IHttpContextAccessor accessor)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IHttpContextAccessor accessor)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            loggerFactory.AddElmahIo("12245a4a7e4444f388b4d5be34a149d6", new Guid("7d9f3536-e431-46d1-954e-3aa39a74001c"));
+            app.UseElmahIo("12245a4a7e4444f388b4d5be34a149d6", new Guid("7d9f3536-e431-46d1-954e-3aa39a74001c"));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -56,8 +76,8 @@ namespace SeuEvento.Site
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                app.UseExceptionHandler("/erro-de-aplicacao");
+                app.UseStatusCodePagesWithReExecute("/erro-de-aplicacao/{0}");
             }
 
             app.UseHttpsRedirection();

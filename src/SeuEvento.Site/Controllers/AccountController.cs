@@ -472,7 +472,7 @@ namespace SeuEvento.Site.Controllers
         [HttpGet]
         public IActionResult AccessDenied()
         {
-            return RedirectToAction("Erros", "Erro", new {id = 403});
+            return RedirectToAction("Erros", "Erros", new {id = 403});
         }
 
         #region Helpers

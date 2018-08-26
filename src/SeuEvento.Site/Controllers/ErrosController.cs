@@ -3,11 +3,11 @@ using SeuEvento.Domain.Interfaces;
 
 namespace SeuEvento.Site.Controllers
 {
-    public class ErroController : Controller
+    public class ErrosController : Controller
     {
         private readonly IUser _user;
 
-        public ErroController(IUser user)
+        public ErrosController(IUser user)
         {
             _user = user;
         }

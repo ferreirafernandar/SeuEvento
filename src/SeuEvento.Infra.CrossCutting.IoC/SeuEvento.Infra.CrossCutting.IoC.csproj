@@ -8,6 +8,7 @@
     <ProjectReference Include="..\SeuEvento.Application\SeuEvento.Application.csproj" />
     <ProjectReference Include="..\SeuEvento.Domain.Core\SeuEvento.Domain.Core.csproj" />
     <ProjectReference Include="..\SeuEvento.Domain\SeuEvento.Domain.csproj" />
+    <ProjectReference Include="..\SeuEvento.Infra.CrossCutting.AspNetFilters\SeuEvento.Infra.CrossCutting.AspNetFilters.csproj" />
     <ProjectReference Include="..\SeuEvento.Infra.CrossCutting.Identity\SeuEvento.Infra.CrossCutting.Identity.csproj" />
     <ProjectReference Include="..\SeuEvento.Infra.Data\SeuEvento.Infra.Data.csproj" />
     <ProjectReference Include="..\SeuEvento.IO.Infra.CrossCutting.Bus\SeuEvento.Infra.CrossCutting.Bus.csproj" />
