@@ -17,19 +17,21 @@ namespace SeuEvento.Infra.Data.Repository
 
         public override IEnumerable<Evento> ObterTodos()
         {
-            const string sql = "SELECT * FROM EVENTOS E " +
-                               "WHERE E.EXCLUIDO = 0 " +
-                               "ORDER BY E.DATAFIM DESC ";
+            const string sql = @"SELECT *
+                                 FROM Eventos E
+                                 WHERE E.Excluido = 0
+                                 ORDER BY E.DataFim DESC";
 
             return Db.Database.GetDbConnection().Query<Evento>(sql);
         }
 
         public override Evento ObterPorId(Guid id)
         {
-            const string sql = @"SELECT * FROM Eventos E " +
-                               "LEFT JOIN Enderecos EN " +
-                               "ON E.Id = EN.EventoId " +
-                               "WHERE E.Id = @uid";
+            const string sql = @"SELECT *
+                                 FROM Eventos E
+                                     LEFT JOIN Enderecos EN
+                                         ON E.Id = EN.EventoId
+                                 WHERE E.Id = @uid";
 
             var evento = Db.Database.GetDbConnection().Query<Evento, Endereco, Evento>(sql,
                 (e, en) =>
@@ -45,10 +47,11 @@ namespace SeuEvento.Infra.Data.Repository
 
         public IEnumerable<Evento> ObterEventoPorOrganizador(Guid organizadorId)
         {
-            const string sql = @"SELECT * FROM EVENTOS E " +
-                               "WHERE E.EXCLUIDO = 0 " +
-                               "AND E.ORGANIZADORID = @oid " +
-                               "ORDER BY E.DATAFIM DESC";
+            const string sql = @"SELECT *
+                                 FROM Eventos E
+                                 WHERE E.Excluido = 0
+                                       AND E.OrganizadorId = @oid
+                                 ORDER BY E.DataFim DESC";
 
             //throw new Exception("Ocorreu um erro");
             return Db.Database.GetDbConnection().Query<Evento>(sql, new { oid = organizadorId });
@@ -65,8 +68,9 @@ namespace SeuEvento.Infra.Data.Repository
 
         public Endereco ObterEnderecoPorId(Guid id)
         {
-            const string sql = @"SELECT * FROM Enderecos E " +
-                               "WHERE E.Id = @uid";
+            const string sql = @"SELECT *
+                                 FROM Enderecos E
+                                 WHERE E.Id = @uid";
 
             var endereco = Db.Database.GetDbConnection().Query<Endereco>(sql, new { uid = id });
 
